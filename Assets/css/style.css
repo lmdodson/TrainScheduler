@@ -1,0 +1,21 @@
+body {
+    background: black;
+}
+
+.jumbotron {
+    background: darkorchid;
+    border: cyan thick double;
+    font-weight: bold;
+    color: white;
+
+}
+
+.card-header {
+    background: dimgray;
+    margin: 25px;
+}
+
+.card-body {
+    border: dimgray thin;
+    margin: 25px;
+}
