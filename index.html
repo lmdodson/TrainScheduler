@@ -13,6 +13,9 @@
     <!-- css -->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800&display=swap" rel="stylesheet">
+
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
@@ -30,7 +33,7 @@
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <h1 class="display-4">Train Scheduler</h1>
             <p class="lead">Train-Town Official Train Database and Scheduler</p>
@@ -38,7 +41,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 mx-auto">
             <!-- Add Player  -->
             <div class="card mb-8 text-center">
                 <div class="card-header">Current Train Schedule</div>
@@ -56,12 +59,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Orient Express</td>
-                                <td>Brazil</td>
-                                <td>10</td>
-                                <td>05:10</td>
-                                <td></td>
                         </tbody>
                     </table>
                 </div>
@@ -70,10 +67,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 mx-auto">
             <!-- Add Train  -->
             <div class="card mb-8">
-                <div class="card-header">Add Train</div>
+                <div class="card-header text-center">Add Train</div>
                 <div class="card-body">
                     <!-- Entry Form -->
                     <form>

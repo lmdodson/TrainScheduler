@@ -1,22 +1,30 @@
 body {
-    background: black;
+    background: url(../Images/train.jpg);
 }
 
 .jumbotron {
-    background: darkorchid;
-    border: cyan thick double;
-    font-weight: bold;
-    color: white;
+    background: darkolivegreen;
+    border: darkgoldenrod thick double;
+    font-family: 'Coda Caption', sans-serif;
+    font-weight: bolder;
+    color: rgb(214, 206, 199);
+    opacity: 80%;
 
+}
+
+.card {
+    background: darkolivegreen;
+    margin: .5em;
 }
 
 .card-header {
-    background: dimgray;
+    background: rgb(53, 68, 41);
     margin: 25px;
     font-size: 1.5em;
+    color: rgb(214, 206, 199);
+
 }
 
 .card-body {
-    border: dimgray thin;
     margin: 25px;
 }
