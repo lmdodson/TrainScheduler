@@ -21,6 +21,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+
     <title>Train Scheduler</title>
 
 </head>
@@ -36,11 +40,11 @@
     <div class="row">
         <div class="col-md-8">
             <!-- Add Player  -->
-            <div class="card mb-8">
+            <div class="card mb-8 text-center">
                 <div class="card-header">Current Train Schedule</div>
                 <div class="card-body">
                     <!-- Train Display Table -->
-                    <table class="table table-striped table-dark">
+                    <table class="table table-striped table-dark train-table">
                         <thead>
                             <tr>
                                 <th scope="col">Train Name</th>
@@ -53,11 +57,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
                                 <td>Orient Express</td>
                                 <td>Brazil</td>
                                 <td>10</td>
-                                <td>05:10 AM</td>
+                                <td>05:10</td>
                                 <td></td>
                         </tbody>
                     </table>
@@ -83,15 +86,15 @@
                                 id="destination-input" placeholder="Alpha Station" type="text">
                         </div>
                         <div class="form-group">
-                            <label for="train-time-input">Initial Train Time</label>
-                            <input class="form-control" id="train-time-input" placeholder="01:00 AM" type="text">
+                            <label for="train-time-input">Initial Train Time (HH:mm - Military Time)</label>
+                            <input class="form-control" id="train-time-input" placeholder="01:00" type="text">
                         </div>
                         <div class="form-group">
                             <label for="frequency-input">Frequency (minutes)</label>
                             <input class="form-control" id="frequency-input" placeholder="10" type="text">
                         </div>
 
-                        <button class="btn btn-primary float-right" id="submit">Add Train</button>
+                        <button class="btn btn-primary float-right" id="add-train">Add Train</button>
                     </form>
 </body>
 

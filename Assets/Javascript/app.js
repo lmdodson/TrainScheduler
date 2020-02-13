@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Firebase config
-    var firebaseConfig = {
+    const firebaseConfig = {
         apiKey: "AIzaSyCg3o1C8B8_VYnPB1ciLF4EbbOuSFtrw04",
         authDomain: "trainscheduler-e62ec.firebaseapp.com",
         databaseURL: "https://trainscheduler-e62ec.firebaseio.com",
@@ -12,38 +12,75 @@ $(document).ready(function () {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    // Firebase reference variables
-    const dataRef = firebase.database();
+    var database = firebase.database();
 
-    // Initial values
 
-    var name = "";
-    var dest = "";
-    var freq = 0;
-    var initTime = "";
-    var trainObj = {};
+    //
+
+    $("#add-train").on("click", function (event) {
+        event.preventDefault();
+
+        // Grab user input    
+        var name = $("#train-name-input").val().trim();
+        var dest = $("#destination-input").val().trim();
+        var initTime = moment($("#train-time-input").val().trim(), "HH:mm").subtract(10, "years").format("X");
+        var freq = $("#frequency-input").val().trim();
+
+        console.log(initTime);
+
+        // Add the values into an array
+        var trainObj = {
+            name: name,
+            dest: dest,
+            freq: freq,
+            time: initTime
+        };
+
+        // Upload train info to the database
+        database.ref().push(trainObj)
+
+        // Clears all of the text-boxes
+        var name = $("#train-name-input").val("");
+        var dest = $("#destination-input").val("");
+        var initTime = $("#train-time-input").val("");
+        var freq = $("#frequency-input").val("");
+    });
+
+    // 3. Create Firebase event for adding train to the database and a row in the html when a user adds an entry
+    database.ref().on("child_added", function (childSnapshot) {
+        console.log(childSnapshot.val());
+
+        // Store everything into a variable
+        var trainName = childSnapshot.val().name;
+        var trainDest = childSnapshot.val().dest;
+        var trainTime = childSnapshot.val().time;
+        var trainFreq = childSnapshot.val().freq;
+
+        // console.log('trainName: ', trainName);
+        // console.log('trainDest: ', trainDest);
+        // console.log('trainTime: ', trainTime);
+        // console.log('trainFreq: ', trainFreq);
+
+
+
+        var timeRemaining = moment().diff(moment.unix(trainTime), "minutes") % trainFreq;
+        var minutes = trainFreq - timeRemaining;
+        var trainArrive = moment().add(minutes, "m").format("hh:mm A")
+
+        console.log(timeRemaining);
+        console.log(minutes);
+
+        // Create the new row
+        var newRow = $("<tr>").append(
+            $("<td>").text(trainName),
+            $("<td>").text(trainDest),
+            $("<td>").text(trainFreq),
+            $("<td>").text(trainArrive),
+            $("<td>").text(minutes),
+        );
+
+        // Append the new row to the table
+        $(".train-table > tbody").append(newRow);
+    });
+
 })
-
-//
-
-$("#add-player").on("click", function (event) {
-    event.preventDefault();
-
-    // Grab user input    
-    name = $("#train-name-input").val().trim();
-    dest = $("#destination-input").val().trim();
-    time = $("#train-time-input").val().trim();
-    freq = $("#frequency-input").val().trim();
-
-    // Add the values into an array
-
-    trainObj.name = name;
-    trainObj.dest = dest;
-    trainObj.freq = freq;
-    trainObj.time = initialTimeConverted;
-
-    initialTimeConverted = moment(initTime, "HH:mm").subtract(1, "years");
-    console.log(initialTimeConverted);
-
-
-});

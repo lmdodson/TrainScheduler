@@ -13,6 +13,7 @@ body {
 .card-header {
     background: dimgray;
     margin: 25px;
+    font-size: 1.5em;
 }
 
 .card-body {
