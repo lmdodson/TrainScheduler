@@ -1,6 +1,6 @@
 # Train Scheduler
 
-This project is a homework assignment from UT Austin Bootcamp. It dynamically creates a train schedule based on user-input.
+This project dynamically creates a train schedule based on user-input.
 
 ## Getting Started
 
